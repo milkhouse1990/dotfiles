@@ -27,6 +27,9 @@ map <LEADER>a :vs ~/.config/nvim/init.vim<CR>
 
 map ; :
 
+" ----- Julia setting -----
+autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
+
 " ===== Plug install =====
 " Used for a new machine
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -39,13 +42,20 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Git
 Plug 'mhinz/vim-signify'
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Comments
+Plug 'scrooloose/nerdcommenter'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -61,3 +71,8 @@ call plug#end()
 
 " NERDTree
 map tt :NERDTreeToggle<CR>
+
+" ultisnips
+" Define where my snippets are.
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
+

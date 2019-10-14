@@ -1,0 +1,30 @@
+# Matrix
+global !p
+def create_row_placeholders(snip):
+    # retrieving singlee line from current string and treat it like tabstops
+    # count
+    args = snip.buffer[snip.line].strip()
+    row = int(args[0])
+    column = int(args[1])
+    # placeholders_amount = int(snip.buffer[snip.line].strip())
+
+    # erase current line
+    snip.buffer[snip.line] = ''
+
+    # create anonymous snippet with expected content and number of tabstops
+    body = "\\begin{bmatrix}\n"
+    for j in range(row):
+        body+=' & '.join(['$' + str(i+1+j*column)
+                                    for i in range(column)])
+        body+=' \\\\\\\n'
+    body+="\\end{bmatrix}\n"
+
+    # expand anonymous snippet
+    snip.expand_anon(body)
+endglobal
+
+post_jump "create_row_placeholders(snip)"
+snippet "mat(\d\d)" "latex table row variable" br
+`!p snip.rv = match.group(1)`
+endsnippet
+
