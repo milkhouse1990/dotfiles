@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+# Connect to Ruijie
+# $1 username
+# $2 password
+curl -d "username=$1&pwd=$2" "http://202.118.253.94:8080/eportal/userV2.do?method=login&param=true&`curl gedit.cn|grep -oP "(?<=\?).*(?=\')"`"

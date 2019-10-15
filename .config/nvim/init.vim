@@ -30,6 +30,9 @@ map ; :
 " ----- Julia setting -----
 autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
 
+" ----- change a1 to a_1 -----
+map <LEADER>q :%s/\(\l\)\(\d\)/\1_\2/g<CR>
+
 " ===== Plug install =====
 " Used for a new machine
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
