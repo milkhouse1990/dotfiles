@@ -57,11 +57,20 @@ Plug 'mhinz/vim-signify'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Comments
 Plug 'scrooloose/nerdcommenter'
 
+" ()
+Plug 'tpope/vim-surround'
+
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+" TeX
+Plug 'lervag/vimtex'
 
 " Matlab
 Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
@@ -79,3 +88,5 @@ map tt :NERDTreeToggle<CR>
 " Define where my snippets are.
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 
+" vimtex
+let g:vimtex_compiler_progname = 'nvr'
