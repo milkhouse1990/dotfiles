@@ -27,11 +27,29 @@ map <LEADER>a :vs ~/.config/nvim/init.vim<CR>
 
 map ; :
 
-" ----- Julia setting -----
-autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
-
 " ----- change a1 to a_1 -----
 map <LEADER>q :%s/\(\l\)\(\d\)/\1_\2/g<CR>
+
+" Chinese input
+let g:input_toggle = 1
+function! Fcitx2en()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status == 2
+      let g:input_toggle = 1
+      let l:a = system("fcitx-remote -c")
+   endif
+endfunction
+
+function! Fcitx2zh()
+   let s:input_status = system("fcitx-remote")
+   if s:input_status != 2 && g:input_toggle == 1
+      let l:a = system("fcitx-remote -o")
+      let g:input_toggle = 0
+   endif
+endfunction
+
+autocmd InsertLeave * call Fcitx2en()
+autocmd InsertEnter * call Fcitx2zh()
 
 " ===== Plug install =====
 " Used for a new machine
@@ -45,7 +63,12 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
+" ----- Plug List -----
 call plug#begin('~/.config/nvim/plugged')
+" New status bar, powerline doesn't work with neovim
+Plug 'vim-airline/vim-airline'
+Plug 'edkolev/promptline.vim' " export theme for zsh
+
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -77,9 +100,17 @@ Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'jpalardy/vim-slime'
 call plug#end()
 
 " ===== Plug settings =====
+
+" promoteline
+let g:promptline_preset = {
+        \'b' : [ promptline#slices#user() ],
+        \'c' : [ promptline#slices#cwd() ],
+        \'y' : [ promptline#slices#vcs_branch() ],
+        \'warn' : [ promptline#slices#last_exit_code() ]}
 
 " NERDTree
 map tt :NERDTreeToggle<CR>
@@ -90,3 +121,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 
 " vimtex
 let g:vimtex_compiler_progname = 'nvr'
+
+" julia-vim
+autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
+let g:latex_to_unicode_auto = 1
+
+" vim-slime
+let g:slime_target = "neovim"
