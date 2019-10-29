@@ -101,5 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # Aliases
 alias v="nvim"
+alias m='mkdir'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias -s jl='nvim'
+alias -s md='mednafen'
