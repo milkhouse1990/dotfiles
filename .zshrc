@@ -47,7 +47,7 @@ source ~/.promoteline.sh
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -70,7 +70,8 @@ source ~/.promoteline.sh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git
+	z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,5 +104,21 @@ source $ZSH/oh-my-zsh.sh
 alias v="nvim"
 alias m='mkdir'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias i='sudo pacman -S'
+
 alias -s jl='nvim'
 alias -s md='mednafen'
+
+# ===== Plugins =====
+# git
+# Includes many aliases e.g. `gst` for `git status`
+
+# z
+# Will create a history in `~/.z` then run `z somepath`
+
+# syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# autosuggestions
+# Either `C^f` or `C^e` is ok
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
