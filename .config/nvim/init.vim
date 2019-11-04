@@ -5,7 +5,6 @@ set number
 set relativenumber
 
 set cursorline
-set cursorcolumn
 
 set tabstop=4
 set shiftwidth=4
@@ -36,7 +35,7 @@ map ; :
 
 " ----- INSERT mode -----
 
-" change a1 to a_1 
+" Change a1 to a_1
 map <LEADER>q :%s/\(\l\)\(\d\)/\1_\2/g<CR>
 
 " ===============================
@@ -46,19 +45,19 @@ map <LEADER>q :%s/\(\l\)\(\d\)/\1_\2/g<CR>
 " Chinese input
 let g:input_toggle = 1
 function! Fcitx2en()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status == 2
-      let g:input_toggle = 1
-      let l:a = system("fcitx-remote -c")
-   endif
+	let s:input_status = system("fcitx-remote")
+	if s:input_status == 2
+		let g:input_toggle = 1
+		let l:a = system("fcitx-remote -c")
+	endif
 endfunction
 
 function! Fcitx2zh()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status != 2 && g:input_toggle == 1
-      let l:a = system("fcitx-remote -o")
-      let g:input_toggle = 0
-   endif
+	let s:input_status = system("fcitx-remote")
+	if s:input_status != 2 && g:input_toggle == 1
+		let l:a = system("fcitx-remote -o")
+		let g:input_toggle = 0
+	endif
 endfunction
 
 autocmd InsertLeave * call Fcitx2en()
@@ -74,18 +73,20 @@ autocmd FileType md setlocal spell
 " ----- vim-plug -----
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 function! DoRemote(arg)
-  UpdateRemotePlugins
+	UpdateRemotePlugins
 endfunction
 
 " ---- Plug List -----
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'easymotion/vim-easymotion'
+
 " New status bar, powerline doesn't work with neovim
 Plug 'vim-airline/vim-airline'
 Plug 'edkolev/promptline.vim' " export theme for zsh
@@ -97,7 +98,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Git
 Plug 'mhinz/vim-signify'
 
-" COMMON LANGUAGES 
+" COMMON LANGUAGES
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -131,12 +132,19 @@ call plug#end()
 
 " ----- Plug settings -----
 
+" vim-airline
+let g:airline_mode_map = {
+			\ 'n'	: 'N',
+			\ 'i'	: 'I',
+			\ 'c'	: 'C'
+			\ }
+
 " promoteline
 let g:promptline_preset = {
-        \'b' : [ promptline#slices#user() ],
-        \'c' : [ promptline#slices#cwd() ],
-        \'y' : [ promptline#slices#vcs_branch() ],
-        \'warn' : [ promptline#slices#last_exit_code() ]}
+			\'b' : [ promptline#slices#user() ],
+			\'c' : [ promptline#slices#cwd() ],
+			\'y' : [ promptline#slices#vcs_branch() ],
+			\'warn' : [ promptline#slices#last_exit_code() ]}
 
 " NERDTree
 map tt :NERDTreeToggle<CR>
@@ -155,7 +163,7 @@ let g:vimtex_compiler_progname = 'nvr'
 
 " julia-vim
 autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
-autocmd Filetype julia let g:latex_to_unicode_auto = 1
+let g:latex_to_unicode_auto = 1
 let g:latex_to_unicode_file_types = ["julia", "markdown"]
 
 " vim-slime
