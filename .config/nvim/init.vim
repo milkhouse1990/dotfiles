@@ -131,6 +131,8 @@ Plug 'jpalardy/vim-slime'
 call plug#end()
 
 " ----- Plug settings -----
+" vim-plug
+nmap <c-i> :PlugInstall<CR>
 
 " vim-airline
 let g:airline_mode_map = {

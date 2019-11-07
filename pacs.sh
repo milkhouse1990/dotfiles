@@ -4,3 +4,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # plugins
 sudo pacman -S zsh-syntax-highlighting
 sudo pacman -S zsh-autosuggestions
+
+# gfortran
+sudo pacman -S gcc-fortran
