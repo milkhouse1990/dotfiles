@@ -71,6 +71,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+	sudo
 	z)
 
 source $ZSH/oh-my-zsh.sh
@@ -103,8 +104,21 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias v="nvim"
 alias m='mkdir'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias i='sudo pacman -S'
+alias j='julia'
+
+# Sync dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias ca='config add'
+alias cst='config status'
+alias ccm='config commit -m'
+
+# Open config files
+alias vi3='v ~/.i3/config'
+alias vz='v ~/.zshrc'
+
+# Source config files
+alias sz='source ~/.zshrc'
 
 alias -s jl='nvim'
 alias -s md='mednafen'
@@ -112,6 +126,9 @@ alias -s md='mednafen'
 # ===== Plugins =====
 # git
 # Includes many aliases e.g. `gst` for `git status`
+
+# sudo
+# Press `esc` twice to add a `sudo`
 
 # z
 # Will create a history in `~/.z` then run `z somepath`
