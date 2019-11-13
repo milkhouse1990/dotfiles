@@ -101,17 +101,31 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# ==================================
 # Aliases
+# ==================================
+
+# Common use
 alias v="nvim"
-alias m='mkdir'
+alias m='matlab -nodesktop -nosplash'
 alias i='sudo pacman -S'
 alias j='julia'
+alias t='take'
+
+# !!!!!!!!!!
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
 
 # Sync dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ca='config add'
 alias cst='config status'
-alias ccm='config commit -m'
+alias ccam='config commit -a -m'
+alias ch='config push'
+alias cl='config pull'
+alias cdi='config diff'
 
 # Open config files
 alias vi3='v ~/.i3/config'
@@ -120,8 +134,10 @@ alias vz='v ~/.zshrc'
 # Source config files
 alias sz='source ~/.zshrc'
 
+# Default application
 alias -s jl='nvim'
 alias -s md='mednafen'
+alias -s gba='mednafen'
 
 # ===== Plugins =====
 # git

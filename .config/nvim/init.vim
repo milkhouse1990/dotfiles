@@ -166,7 +166,7 @@ let g:vimtex_compiler_progname = 'nvr'
 " julia-vim
 autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
 let g:latex_to_unicode_auto = 1
-let g:latex_to_unicode_file_types = ["julia", "markdown"]
+let g:latex_to_unicode_file_types = ["julia"]
 
 " vim-slime
 let g:slime_target = "neovim"
