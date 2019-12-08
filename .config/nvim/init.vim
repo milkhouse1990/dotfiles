@@ -2,7 +2,6 @@ let mapleader=" "
 syntax on
 
 set number
-set relativenumber
 
 set cursorline
 
@@ -20,18 +19,17 @@ noremap L 7l
 noremap J 7j
 noremap K 7k
 
-map R :source $MYVIMRC<CR>
+map <leader>r :source $MYVIMRC<CR>
 map s :w<CR>
-map Q :q<CR>
 
 map <LEADER>h <C-w>h
 map <LEADER>j <C-w>j
 map <LEADER>k <C-w>k
 map <LEADER>l <C-w>l
 
-map <LEADER>a :vs ~/.config/nvim/init.vim<CR>
+map <LEADER>v :vsplit $MYVIMRC<CR>
 
-map ; :
+nnoremap <F5> O# <C-r>=strftime('%Y-%m-%d')<CR><esc>
 
 " ----- INSERT mode -----
 
@@ -111,6 +109,7 @@ Plug 'scrooloose/nerdcommenter'
 
 " ()
 Plug 'tpope/vim-surround'
+Plug 'luochen1990/rainbow'
 
 " Grammar checking
 Plug 'rhysd/vim-grammarous' " Depends on: jre, unzip
@@ -128,11 +127,14 @@ Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'jpalardy/vim-slime'
+
+" love2d
+Plug 'davisdude/vim-love-docs'
 call plug#end()
 
 " ----- Plug settings -----
 " vim-plug
-nmap <c-i> :PlugInstall<CR>
+nmap <leader>i :PlugInstall<CR>
 
 " vim-airline
 let g:airline_mode_map = {
@@ -155,8 +157,8 @@ map tt :NERDTreeToggle<CR>
 " Define where my snippets are.
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 
-" nerdcommenter
-let g:NERDSpaceDelims = 1
+" rainbow
+let g:rainbow_active = 1
 
 " -----------------------------------------------
 
