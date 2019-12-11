@@ -114,6 +114,9 @@ Plug 'luochen1990/rainbow'
 " Grammar checking
 Plug 'rhysd/vim-grammarous' " Depends on: jre, unzip
 
+" Linting
+Plug 'dense-analysis/ale'
+
 " SPECIFIC LANGUAGE
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -159,6 +162,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 
 " rainbow
 let g:rainbow_active = 1
+
+" ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " -----------------------------------------------
 
