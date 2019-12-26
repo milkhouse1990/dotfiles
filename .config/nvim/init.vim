@@ -5,8 +5,8 @@ set number
 
 set cursorline
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 " ========================
 " ----- Key bindings -----
@@ -17,7 +17,6 @@ set shiftwidth=4
 noremap H 7h
 noremap L 7l
 noremap J 7j
-noremap K 7k
 
 map <leader>r :source $MYVIMRC<CR>
 map s :w<CR>
@@ -29,12 +28,14 @@ map <LEADER>l <C-w>l
 
 map <LEADER>v :vsplit $MYVIMRC<CR>
 
-nnoremap <F5> O# <C-r>=strftime('%Y-%m-%d')<CR><esc>
+nnoremap <F5> O<C-r>=strftime('%Y-%m-%d')<CR><esc>
 
 " ----- INSERT mode -----
 
 " Change a1 to a_1
 map <LEADER>q :%s/\(\l\)\(\d\)/\1_\2/g<CR>
+
+map! <down> <c-n>
 
 " ===============================
 " ----- Additional function -----
@@ -62,7 +63,11 @@ autocmd InsertLeave * call Fcitx2en()
 autocmd InsertEnter * call Fcitx2zh()
 
 " Spell checking
-autocmd FileType md setlocal spell
+autocmd FileType md,tex setlocal spell
+
+" Python provider config, for better startup (maybe)
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " =================
 " ----- Plugs -----
@@ -95,6 +100,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Git
 Plug 'mhinz/vim-signify'
+
+" Jupyter
+Plug 'jupyter-vim/jupyter-vim'
 
 " COMMON LANGUAGES
 " Snippets
