@@ -112,6 +112,7 @@ alias m='matlab -nodesktop -nosplash'
 alias i='sudo pacman -S'
 alias j='julia'
 alias t='take'
+alias ra='ranger'
 
 # !!!!!!!!!!
 alias mv='mv -i'
@@ -130,6 +131,8 @@ alias cdi='config diff'
 # Open config files
 alias vi3='v ~/.i3/config'
 alias vz='v ~/.zshrc'
+
+alias vt='v ~/me/timelog.md'
 
 # Source config files
 alias sz='source ~/.zshrc'

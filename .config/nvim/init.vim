@@ -36,6 +36,7 @@ nnoremap <F5> O<C-r>=strftime('%Y-%m-%d')<CR><esc>
 map <LEADER>q :%s/\(\l\)\(\d\)/\1_\2/g<CR>
 
 map! <down> <c-n>
+map! <up> <c-p>
 
 " ===============================
 " ----- Additional function -----
@@ -88,7 +89,6 @@ endfunction
 " ---- Plug List -----
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'easymotion/vim-easymotion'
 
 " New status bar, powerline doesn't work with neovim
 Plug 'vim-airline/vim-airline'
@@ -178,10 +178,16 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " -----------------------------------------------
 
 " vimtex
+" synctex setting for okular
+" pip install neovim-remote --user
+" Forward search
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+" Backward search
 let g:vimtex_compiler_progname = 'nvr'
 
 " julia-vim
-autocmd FileType julia nmap <buffer> ? <Plug>(JuliaDocPrompt)
 let g:latex_to_unicode_auto = 1
 let g:latex_to_unicode_file_types = ["julia"]
 
